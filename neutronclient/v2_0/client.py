@@ -965,7 +965,8 @@ class Client(ClientBase):
         return self.delete(self.address_scope_path % (address_scope))
 
     def add_interface_router(self, router, body=None):
-        """Adds an internal network interface to the specified router."""
+        """Adds an internal network interface to the specified router.
+        """
         return self.put((self.router_path % router) + "/add_router_interface",
                         body=body)
 
@@ -975,12 +976,16 @@ class Client(ClientBase):
                         "/remove_router_interface", body=body)
 
     def add_extra_routes_to_router(self, router, body=None):
-        """Adds extra routes to the specified router."""
+        """Adds extra routes to the specified router.
+           Modified api: original is /add_extraroutes
+        """
         return self.put((self.router_path % router) + "/add_extra_routes",
                         body=body)
 
     def remove_extra_routes_from_router(self, router, body=None):
-        """Removes extra routes from the specified router."""
+        """Removes extra routes from the specified router.
+           Modified api: original is /remove_extraroutes
+        """
         return self.put((self.router_path % router) + "/remove_extra_routes",
                         body=body)
 
