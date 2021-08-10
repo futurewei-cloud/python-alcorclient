@@ -976,12 +976,12 @@ class Client(ClientBase):
 
     def add_extra_routes_to_router(self, router, body=None):
         """Adds extra routes to the specified router."""
-        return self.put((self.router_path % router) + "/add_extraroutes",
+        return self.put((self.router_path % router) + "/add_extra_routes",
                         body=body)
 
     def remove_extra_routes_from_router(self, router, body=None):
         """Removes extra routes from the specified router."""
-        return self.put((self.router_path % router) + "/remove_extraroutes",
+        return self.put((self.router_path % router) + "/remove_extra_routes",
                         body=body)
 
     def add_gateway_router(self, router, body=None):
