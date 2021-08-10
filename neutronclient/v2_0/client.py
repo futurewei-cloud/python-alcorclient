@@ -870,6 +870,15 @@ class Client(ClientBase):
         return self.list('subnets', self.subnets_path, retrieve_all,
                          **_params)
 
+    def update_subnet_routetable(self, subnet, body=None):
+        """Adds extra routes to the specified router."""
+        return self.put((self.subnet_path % subnet) + "/routetable",
+                        body=body)
+
+    def delete_subnet_routetable(self, subnet, body=None):
+        """Adds extra routes to the specified router."""
+        return self.delete((self.subnet_path % subnet) + "/routetable")
+
     def show_subnet(self, subnet, **_params):
         """Fetches information of a certain subnet."""
         return self.get(self.subnet_path % (subnet), params=_params)
