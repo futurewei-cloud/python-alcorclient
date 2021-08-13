@@ -979,14 +979,14 @@ class Client(ClientBase):
         """Adds extra routes to the specified router.
            Modified api: original is /add_extraroutes
         """
-        return self.put((self.router_path % router) + "/add_extra_routes",
+        return self.put((self.router_path % router) + "/add_extraroutes",
                         body=body)
 
     def remove_extra_routes_from_router(self, router, body=None):
         """Removes extra routes from the specified router.
            Modified api: original is /remove_extraroutes
         """
-        return self.put((self.router_path % router) + "/remove_extra_routes",
+        return self.put((self.router_path % router) + "/remove_extraroutes",
                         body=body)
 
     def add_gateway_router(self, router, body=None):
