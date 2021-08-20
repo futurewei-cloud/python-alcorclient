@@ -870,6 +870,15 @@ class Client(ClientBase):
         return self.list('subnets', self.subnets_path, retrieve_all,
                          **_params)
 
+    def update_subnet_routetable(self, subnet, body=None):
+        """Adds extra routes to the specified router."""
+        return self.put((self.subnet_path % subnet) + "/routetable",
+                        body=body)
+
+    def delete_subnet_routetable(self, subnet, body=None):
+        """Adds extra routes to the specified router."""
+        return self.delete((self.subnet_path % subnet) + "/routetable")
+
     def show_subnet(self, subnet, **_params):
         """Fetches information of a certain subnet."""
         return self.get(self.subnet_path % (subnet), params=_params)
@@ -956,7 +965,8 @@ class Client(ClientBase):
         return self.delete(self.address_scope_path % (address_scope))
 
     def add_interface_router(self, router, body=None):
-        """Adds an internal network interface to the specified router."""
+        """Adds an internal network interface to the specified router.
+        """
         return self.put((self.router_path % router) + "/add_router_interface",
                         body=body)
 
@@ -966,12 +976,16 @@ class Client(ClientBase):
                         "/remove_router_interface", body=body)
 
     def add_extra_routes_to_router(self, router, body=None):
-        """Adds extra routes to the specified router."""
+        """Adds extra routes to the specified router.
+           Modified api: original is /add_extraroutes
+        """
         return self.put((self.router_path % router) + "/add_extraroutes",
                         body=body)
 
     def remove_extra_routes_from_router(self, router, body=None):
-        """Removes extra routes from the specified router."""
+        """Removes extra routes from the specified router.
+           Modified api: original is /remove_extraroutes
+        """
         return self.put((self.router_path % router) + "/remove_extraroutes",
                         body=body)
 
